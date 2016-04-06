@@ -3,9 +3,9 @@
 
 #include "../hexapawn.h"
 
-typedef struct board{
-	char data[3][3];
-}board;
-
-char getPiece();
+typedef enum pieces{ WHITE, BLACK, SPACE }pieces;
+void initBoard(pieces b[ROWS][COLS]);
+void printBoard(pieces b[ROWS][COLS]);
+int *getPositions(pieces b[ROWS][COLS],int *numOfPieces, pieces colour);
+int calculateCOMPMOVE(int *positions);
 #endif

@@ -4,13 +4,15 @@
 int main(){
 	pieces board[3][3];
 	pieces chosen_piece;
-	bool isTurn = true;	//White = 0, Black = 1
+	bool isTurn = false;	//White = 0, Black = 1
 
 	displayInstruction();	
 	initBoard(board);
 
 	while(1){
 		int *positions;
+		int *neighbors;
+		int numberOfNeighbors = 0;
 		int numberOfPieces = 0;
 		int i;
 		printf("The Current Board:\n");
@@ -19,9 +21,8 @@ int main(){
 			positions = getPositions(board,&numberOfPieces,WHITE);		
 		}else{
 			positions = getPositions(board,&numberOfPieces,BLACK);
-		}
-		for(i = 0; i < numberOfPieces; i++){
-			printf("%d",positions[i]);
+			neighbors = getVacantLocations(board,&numberOfNeighbors,6);
+			free(neighbors);
 		}
 		free(positions);
 		break;
@@ -50,11 +51,4 @@ void displayInstruction(){
 		printf("+---+---+---+\n");
 	}
 	printf("\n");
-}
-
-int randNumber(){
-	int randomNum;
-	srand(time(NULL));
-	randomNum = (rand() % 9) + 1;
-	return randomNum;
 }

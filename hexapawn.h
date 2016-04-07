@@ -13,8 +13,4 @@ Display Instructions for game
 *********/
 void displayInstruction();
 
-/*********
-Generate random number 1-10 
-**********/
-int randNumber();
 #endif
